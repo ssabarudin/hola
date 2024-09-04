@@ -3,114 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat with Hola.AI</title>
+    <title>Hola.AI Chat</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #e0eafc, #cfdef3);
-            color: #333;
+            padding: 0;
             display: flex;
-            flex-direction: column;
-            height: 100vh;
             justify-content: center;
             align-items: center;
+            height: 100vh;
         }
         .chat-container {
-            width: 90%;
-            max-width: 800px;
-            height: 80%;
-            display: flex;
-            flex-direction: column;
-            background: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .chat-box {
-            flex: 1;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
             padding: 20px;
-            overflow-y: auto;
-            border-bottom: 1px solid #ddd;
         }
-        .chat-input {
-            display: flex;
-            border-top: 1px solid #ddd;
-        }
-        .chat-input input {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            border-radius: 0;
-            font-size: 1em;
-            outline: none;
-            background: #f4f4f4;
+        .welcome {
+            font-size: 24px;
+            margin-bottom: 20px;
             color: #333;
-        }
-        .chat-input button {
-            padding: 15px;
-            border: none;
-            background: #ff6f61;
-            color: #fff;
-            cursor: pointer;
-            font-size: 1em;
-            border-radius: 0;
-        }
-        .chat-input button:hover {
-            background: #ff4d4d;
         }
         .message {
-            margin: 10px 0;
+            margin-bottom: 15px;
             padding: 10px;
-            border-radius: 10px;
+            border-radius: 5px;
+            background: #f9f9f9;
         }
         .message.user {
-            background: #ff6f61;
-            color: #fff;
+            background: #e1f5fe;
             align-self: flex-end;
-            max-width: 70%;
         }
-        .message.bot {
-            background: #f4f4f4;
-            color: #333;
+        .message.hola {
+            background: #e8f5e9;
             align-self: flex-start;
-            max-width: 70%;
+        }
+        .message p {
+            margin: 0;
         }
     </style>
 </head>
 <body>
     <div class="chat-container">
-        <div class="chat-box" id="chat-box">
-            <div class="message bot">Hello! How was your day today?</div>
-            <div class="message user">It was pretty good. I went to the park and had a relaxing afternoon. How about you?</div>
-            <div class="message bot">I’m just here, ready to chat and assist you. I’m glad you had a nice day!</div>
+        <div class="welcome">Welcome to Hola.AI</div>
+        <div class="message hola">
+            <p>Hola.AI: Hi there! How's your day going?</p>
         </div>
-        <div class="chat-input">
-            <input type="text" id="message-input" placeholder="Type a message...">
-            <button onclick="sendMessage()">Send</button>
+        <div class="message user">
+            <p>User: It's going well, thank you! I've been quite busy with work. How about you?</p>
+        </div>
+        <div class="message hola">
+            <p>Hola.AI: I'm doing great, thanks for asking! Just here to help out and chat. What have you been working on?</p>
+        </div>
+        <div class="message user">
+            <p>User: I've been working on a new project for my job. It's a bit challenging but exciting!</p>
+        </div>
+        <div class="message hola">
+            <p>Hola.AI: That sounds interesting! What’s the project about?</p>
+        </div>
+        <div class="message user">
+            <p>User: It's a new software tool we're developing to improve workflow efficiency.</p>
+        </div>
+        <div class="message hola">
+            <p>Hola.AI: That sounds like a valuable tool. I’m sure it will make a big difference! Is there anything specific you're finding challenging?</p>
+        </div>
+        <div class="message user">
+            <p>User: Mainly the integration with existing systems. It’s a bit tricky to ensure compatibility.</p>
+        </div>
+        <div class="message hola">
+            <p>Hola.AI: Integration can definitely be a complex task. Have you been able to find any solutions or resources that might help?</p>
+        </div>
+        <div class="message user">
+            <p>User: I’ve been looking into some documentation and reaching out to colleagues for advice. It’s a work in progress.</p>
+        </div>
+        <div class="message hola">
+            <p>Hola.AI: That’s a good approach. Keep at it, and I'm sure you'll make great progress. If you need any help or just want to chat more, I’m here!</p>
         </div>
     </div>
-    <script>
-        function sendMessage() {
-            var input = document.getElementById('message-input');
-            var message = input.value.trim();
-            if (message) {
-                var chatBox = document.getElementById('chat-box');
-                var userMessage = document.createElement('div');
-                userMessage.className = 'message user';
-                userMessage.textContent = message;
-                chatBox.appendChild(userMessage);
-
-                input.value = '';
-
-                var botMessage = document.createElement('div');
-                botMessage.className = 'message bot';
-                botMessage.textContent = "That sounds interesting!";
-                chatBox.appendChild(botMessage);
-
-                chatBox.scrollTop = chatBox.scrollHeight;
-            }
-        }
-    </script>
 </body>
 </html>
