@@ -3,44 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Hola.AI</title>
+    <title>Chat with Hola.AI</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #00f2fe, #4facfe);
-            color: #fff;
-            text-align: center;
+            background: #222;
+            color: #eee;
             display: flex;
+            flex-direction: column;
+            height: 100vh;
             justify-content: center;
             align-items: center;
-            height: 100vh;
         }
-        .container {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
+        .chat-container {
+            width: 80%;
+            max-width: 800px;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            background: #333;
             border-radius: 10px;
+            overflow: hidden;
         }
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
+        .chat-box {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            border-bottom: 1px solid #444;
         }
-        a {
+        .chat-input {
+            display: flex;
+            border-top: 1px solid #444;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 0;
+            font-size: 1em;
+            outline: none;
+            background: #444;
+            color: #eee;
+        }
+        .chat-input button {
+            padding: 10px;
+            border: none;
+            background: #00f2fe;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 0;
+        }
+        .chat-input button:hover {
+            background: #00d8e2;
+        }
+        .message {
+            margin: 10px 0;
+        }
+        .message.user {
+            color: #ff6f61;
+        }
+        .message.bot {
             color: #00f2fe;
-            text-decoration: none;
-            font-size: 1.2em;
-            display: block;
-            margin-top: 20px;
-        }
-        a:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Hola.AI</h1>
-        <a href="chat.html">Start Chatting</a>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box">
+            <div class="message bot">Hello! How was your day today?</div>
+            <div class="message user">It was pretty good. I went to the park and had a relaxing afternoon. How about you?</div>
+            <div class="message bot">I’m just here, ready to chat and assist you. I’m glad you had a nice day!</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
     </div>
+    <script>
+        function sendMessage() {
+            var input = document.getElementById('message-input');
+            var message = input.value.trim();
+            if (message) {
+                var chatBox = document.getElementById('chat-box');
+                var userMessage = document.createElement('div');
+                userMessage.className = 'message user';
+                userMessage.textContent = message;
+                chatBox.appendChild(userMessage);
+
+                input.value = '';
+
+                var botMessage = document.createElement('div');
+                botMessage.className = 'message bot';
+                botMessage.textContent = "That sounds interesting!";
+                chatBox.appendChild(botMessage);
+
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+    </script>
 </body>
 </html>
